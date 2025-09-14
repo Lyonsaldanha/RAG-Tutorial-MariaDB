@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mariadb:
+    image: mariadb:11.7
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: ragdb
+    ports:
+      - "3306:3306"
+    command: --plugin-load-add=ha_vector
+    volumes:
+      - mariadb_data:/var/lib/mysql
+volumes:
+  mariadb_data:
